@@ -13,7 +13,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 " Fast grep
-Plugin 'jremmen/vim-ripgrep'
+Plugin 'mhinz/vim-grepper'
 " Fuzzy finder
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -138,8 +138,9 @@ map <C-p> :Files<cr>
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
-" map ctrl+o to ripgrep
-map <C-o> :Rg 
+" Map ctrl+o to RipGrep
+map <C-o> :GrepperRg 
+
 " map ctrl+n to NERDTree
 map <silent> <C-n> :NERDTreeFocus<CR>
 
