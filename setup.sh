@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-read -p "⚠️     This will remove existing config files. Are you sure? [y|n]" -n 1 -r
+read -p "⚠️     This will remove existing config files from the root directory. Are you sure? [y|n]" -n 1 -r
 
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -11,12 +11,15 @@ echo
 echo
 
 echo "Deleting existing config files 🧹"
-rm ~/.gitconfig
-rm ~/.tmux.conf
-rm ~/.vimrc
-echo "Done ✨"
+echo -e "Removing Git config . . .\t🔥"
+# the -f is so we don't show a warning if the file doesn't already exist
+rm -f ~/.gitconfig
+echo -e "Removing Tmux config . . .\t🔥"
+rm -f ~/.tmux.conf
+echo -e "Removing vimrc . . .\t\t🔥"
+rm -f ~/.vimrc
 
-echo "Creating links to new config files 🔨"
+echo "Creating fresh links to config files 🪄  ✨ 🥰"
 ln git/gitconfig ~/.gitconfig
 ln tmux/tmux.conf ~/.tmux.conf
 ln vim/vimrc ~/.vimrc
