@@ -1,0 +1,21 @@
+[core]
+	excludesfile = /Users/andy/.gitignore_global
+	editor = vim
+[merge]
+  tool = opendiff
+[push]
+  # push current branch even if you've never pushed it before
+  default = current
+[user]
+	name = Andy Stabler
+	email = andy_60@hotmail.co.uk
+[alias]
+	co = checkout
+	br = branch
+	st = status
+  cm = commit -v
+  sha = rev-parse HEAD
+	conflicts = diff --name-only --diff-filter=U
+  fp = push origin --force-with-lease
+[mergetool]
+	keepBackup = false
