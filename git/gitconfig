@@ -8,7 +8,7 @@
   default = current
 [user]
 	name = Andy Stabler
-	email = andy_60@hotmail.co.uk
+	email = me@andystabler.co.uk
 [alias]
 	co = checkout
 	br = branch
