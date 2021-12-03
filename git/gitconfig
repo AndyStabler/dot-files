@@ -17,5 +17,6 @@
   sha = rev-parse HEAD
 	conflicts = diff --name-only --diff-filter=U
   fp = push origin --force-with-lease
+  yeet = !git reset --hard && git clean -df
 [mergetool]
 	keepBackup = false
