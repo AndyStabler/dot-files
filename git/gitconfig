@@ -10,13 +10,14 @@
 	name = Andy Stabler
 	email = me@andystabler.co.uk
 [alias]
-	co = checkout
-	br = branch
-	st = status
+  co = checkout
+  br = branch
+  st = status
   cm = commit -v
   sha = rev-parse HEAD
-	conflicts = diff --name-only --diff-filter=U
+  conflicts = diff --name-only --diff-filter=U
   fp = push origin --force-with-lease
   yeet = !git reset --hard && git clean -df
+  lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
 [mergetool]
 	keepBackup = false
