@@ -133,6 +133,9 @@ autocmd VimResized * :wincmd =
 " airline-themes
 let g:airline_theme='simple'
 
+" Custom version of Files command so we're case insensitive
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['-i', '--info=inline']}), <bang>0)
 " map ctrl+p to fzf
 map <C-p> :Files<cr>
 let g:fzf_files_options =
