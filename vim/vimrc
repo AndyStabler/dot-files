@@ -97,7 +97,7 @@ set incsearch
 set nrformats=
 set clipboard=unnamed
 set autoread
-set listchars=tab:>·,trail:·,space:·
+set listchars=tab:>·,trail:·
 set list
 " Ignore case when searching
 set ignorecase
