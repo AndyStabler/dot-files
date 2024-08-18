@@ -6,7 +6,9 @@ which -s brew
 if [[ $? != 0 ]] ; then
   # Install Homebrew
   echo "Nope. Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/andy/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo "Yep. Updating homebrew..."
   brew update
