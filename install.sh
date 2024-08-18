@@ -27,6 +27,13 @@ fi
 echo "====\nInstalling ohmyzsh\n====="
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# install vundle for vim plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# install pathogen for vim
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 echo "=====\nInstalling Ruby\n====="
 ruby-install 3.2.2
 

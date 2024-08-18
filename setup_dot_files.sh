@@ -47,7 +47,7 @@ else
   set_up_dot_file "$(pwd)/tmux/tmux.conf" "${HOME}/.tmux.conf"
 
   echo -e "====\n Setting up vim\n====="
-  set_up_dot_file "$(pwd)/vim/vimrc" "${HOME}/.vim.rc"
+  set_up_dot_file "$(pwd)/vim/vimrc" "${HOME}/.vimrc"
 
   echo -e "====\n Setting up zshrc\n====="
   set_up_dot_file "$(pwd)/zshrc/zshrc" "${HOME}/.zshrc"
