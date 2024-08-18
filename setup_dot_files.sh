@@ -11,12 +11,12 @@ echo
 echo
 
 echo "Deleting existing config files 🧹"
-echo -e "Removing Git config . . .\t🔥"
+echo -e "Removing Git config\t. . .\t🔥"
 # the -f is so we don't show a warning if the file doesn't already exist
 rm -f ~/.gitconfig
-echo -e "Removing Tmux config . . .\t🔥"
+echo -e "Removing Tmux config\t. . .\t🔥"
 rm -f ~/.tmux.conf
-echo -e "Removing vimrc . . .\t\t🔥"
+echo -e "Removing vimrc\t\t. . .\t🔥"
 rm -f ~/.vimrc
 
 echo "Creating fresh links to config files 🪄  ✨ 🥰"
