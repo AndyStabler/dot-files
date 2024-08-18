@@ -1,0 +1,26 @@
+# Dev tools
+brew 'vim'
+brew 'ctags'
+brew 'fzf'
+brew 'tmux'
+brew 'ruby-install'
+brew 'chruby'
+brew "zsh"
+# JS stuff
+brew 'nvm'
+brew 'npm'
+brew 'yarn'
+# Hosting
+brew 'heroku'
+brew 'awscli'
+brew 'aws-vault'
+# Finding stuff
+brew 'fd'
+brew 'ripgrep'
+# SSH tools
+brew 'openssh'
+# Databases
+brew 'postgresql@15'
+brew 'redis'
+# list directory contents in tree format
+brew 'tree'
