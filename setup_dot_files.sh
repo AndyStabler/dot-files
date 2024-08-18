@@ -36,7 +36,7 @@ clean_up_backup() {
 if [[ "$#" -eq 1 && "$1" == "--clean-up" ]]; then
   clean_up_backup "${HOME}/.gitconfig"
   clean_up_backup "${HOME}/.tmux.conf"
-  clean_up_backup "${HOME}/.vim.rc"
+  clean_up_backup "${HOME}/.vimrc"
   clean_up_backup "${HOME}/.zshrc"
 else
   safety_check
