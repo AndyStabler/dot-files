@@ -167,3 +167,10 @@ autocmd WinLeave * setlocal nocursorline
 
 " syntax highlighting for rbapi files
 au BufNewFile,BufRead,BufReadPost *.rbapi set syntax=ruby
+
+" Formatting SQL
+function! FormatSQL()
+  '<,'>!sqlformat --reindent -
+endfunction
+
+command! -range FormatSQL <line1>,<line2>call FormatSQL()

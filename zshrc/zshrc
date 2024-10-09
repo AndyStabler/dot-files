@@ -117,6 +117,7 @@ source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="$PATH:/Users/andy/dev/sdo"
+export PATH="$PATH:/Users/andy/Library/Python/3.9/bin"
 
 export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs --hidden'
 # Node Version Manager stuff
