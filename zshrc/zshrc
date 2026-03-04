@@ -128,3 +128,6 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f ~/.zsh_variables ]; then
   source ~/.zsh_variables
 fi
+
+# Created by `pipx` on 2026-03-04 17:17:54
+export PATH="$PATH:/Users/andy/.local/bin"
