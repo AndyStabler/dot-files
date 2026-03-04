@@ -49,6 +49,9 @@ else
   echo -e "====\n Setting up vim\n====="
   set_up_dot_file "$(pwd)/vim/vimrc" "${HOME}/.vimrc"
 
+  echo -e "====\n Setting up neovim\n====="
+  set_up_dot_file "$(pwd)/nvim/init.vim" "${HOME}/.config/nvim/init.vim"
+
   echo -e "====\n Setting up zshrc\n====="
   set_up_dot_file "$(pwd)/zshrc/zshrc" "${HOME}/.zshrc"
 

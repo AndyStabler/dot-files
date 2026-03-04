@@ -1,0 +1,173 @@
+
+
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" Fast grep
+Plugin 'mhinz/vim-grepper'
+" Fuzzy finder
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'L9'
+" Colour scheme
+Plugin 'rafi/awesome-vim-colorschemes'
+" Used for running test from inside Vim
+Plugin 'janko-m/vim-test'
+" Allows for easy commenting
+Plugin 'scrooloose/nerdcommenter.git'
+" Directory plugin
+Plugin 'scrooloose/nerdtree'
+" Highlight trailing whitespace
+Plugin 'ntpeters/vim-better-whitespace'
+" Status/tabline
+Plugin 'vim-airline/vim-airline'
+" Make vim-airline pretty
+Plugin 'vim-airline/vim-airline-themes'
+" Show git related info in files
+Plugin 'airblade/vim-gitgutter'
+" Automatically configure vim to match an editorconfig file
+Plugin 'editorconfig/editorconfig-vim'
+" Allows for vim-like navigation in tmux
+Plugin 'christoomey/vim-tmux-navigator'
+" Lets you pass commands from vim to tmux
+Plugin 'christoomey/vim-tmux-runner'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+set nu
+syntax on
+if has("termguicolors")
+  set termguicolors
+endif
+colorscheme OceanicNext
+
+set backspace=indent,eol,start
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set shell=$SHELL
+" Highligh search results
+set hls
+"This unsets the "last search pattern" register by hitting return
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+let mapleader = "\<Space>"
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+" Tmux-vim-integration—opens tmux on the right
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>f :VtrSendLinesToRunner<cr>
+nnoremap <leader>sc :VtrSendCommandToRunner 
+
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
+let test#strategy = "vtr"
+
+" Search for strings as you type
+set incsearch
+set nrformats=
+set clipboard=unnamedplus
+set autoread
+set listchars=tab:>·,trail:·
+set list
+" Ignore case when searching
+set ignorecase
+" When searching try to be smart about cases (searching 'The' would be case
+" sensitive, but 'the' would not be a case sensitive search)
+set smartcase
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+set lazyredraw
+" indicates fast terminal connection– more chars sent to screen for redrawing
+set ttyfast
+set nocul
+" setting a short updatetime so git gutter quickly shows what lines have changed
+set updatetime=100
+let NERDTreeShowHidden=1
+
+highlight ExtraWhitespace ctermbg=green
+
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! wa
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" airline-themes
+let g:airline_theme='simple'
+
+" Custom version of Files command so we're case insensitive
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['-i', '--info=inline']}), <bang>0)
+" map ctrl+p to fzf
+map <C-p> :Files<cr>
+let g:fzf_files_options =
+  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+" Map ctrl+o to RipGrep
+map <C-o> :GrepperRg 
+
+" map ctrl+n to NERDTree
+map <silent> <C-n> :NERDTreeFocus<CR>
+
+" Add vertical bar at 115 characters
+set colorcolumn=50,72,120
+
+" This is needed so that NERDTree plays nicely with the vim-tmux-navigator
+" plugin
+let g:NERDTreeMapJumpPrevSibling=""
+let g:NERDTreeMapJumpNextSibling=""
+
+" set the cursor line highlighting so I don't lose where I am
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+
+" syntax highlighting for rbapi files
+au BufNewFile,BufRead,BufReadPost *.rbapi set syntax=ruby
+
+" Formatting SQL
+function! FormatSQL()
+  '<,'>!sqlformat --reindent -
+endfunction
+
+command! -range FormatSQL <line1>,<line2>call FormatSQL()
