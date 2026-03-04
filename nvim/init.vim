@@ -4,6 +4,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let g:python3_host_prog = expand("$HOME/.local/bin/pynvim-python")
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -41,7 +43,6 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 " Lets you pass commands from vim to tmux
 Plugin 'christoomey/vim-tmux-runner'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
