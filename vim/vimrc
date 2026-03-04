@@ -149,7 +149,7 @@ map <silent> <C-n> :NERDTreeFocus<CR>
 
 " Add vertical bar at 115 characters
 if exists('+colorcolumn')
-  set colorcolumn=50,72,115
+  set colorcolumn=50,72,120
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>115v.\+', -1)
 endif
